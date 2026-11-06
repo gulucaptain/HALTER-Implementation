@@ -235,19 +235,6 @@ Rates are reported as mean ± binomial standard error, √(p(1−p)/n), which ma
 
 Contributions and bug reports are welcome through issues and pull requests.
 
-## Citation
-
-If you use this code, please cite the original paper:
-
-```bibtex
-@article{jiang2026halter,
-  title   = {From Rollout to Reset: A Graph-Based Harness for Autonomous Long-Horizon Manipulation Evaluation},
-  author  = {Jiang, Jing and Yang, Yue and Jiang, Xinkai and Bertasius, Gedas and Szafir, Daniel J. and Lioutikov, Rudolf},
-  journal = {arXiv preprint arXiv:2609.19413},
-  year    = {2026}
-}
-```
-
 ## Acknowledgements
 
 This implementation builds on [X-VLA](https://arxiv.org/abs/2510.10274), [LeRobot](https://github.com/huggingface/lerobot),
