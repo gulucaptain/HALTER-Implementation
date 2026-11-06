@@ -1,0 +1,32 @@
+# Real-robot campaign (paper setup: Franka Panda + Robotiq 2F-85, 2x OAK-D Lite + 1x ZED)
+mode: real
+llm: configs/llm/local_vllm.yaml
+tasks: [configs/tasks/drawer_store.yaml]
+episodes: 25
+robot: {type: franka, host: 172.16.0.2, gripper_port: /dev/ttyUSB0, control_hz: 15}
+cameras:
+  - {name: side, type: oakd, extrinsics: calib/side_T_world_cam.npy}
+  - {name: wrist, type: oakd, extrinsics: calib/wrist_T_ee_cam.npy, wrist: true}
+  - {name: opposite, type: zed, extrinsics: calib/opposite_T_world_cam.npy}
+segmenter:
+  type: grounded_sam
+  dino_id: IDEA-Research/grounding-dino-base
+  sam_id: facebook/sam-vit-huge
+  device: cuda
+scene_graph: {rate_hz: 0.5, voxel: 0.005, min_points: 30}
+skills:
+  type: xvla             # xvla | mp
+  device: cuda
+  two_policy_mode: retry
+  image_keys: {side: observation.images.side, wrist: observation.images.wrist}
+rollout:                 # policy under evaluation (paper: task-specific BESO checkpoint)
+  type: lerobot
+  policy_type: diffusion
+  checkpoint: ckpt/rollout/drawer_store
+  max_steps: 1200
+  image_keys: {side: observation.images.side, wrist: observation.images.wrist}
+harness:
+  skill_retries: 0
+  max_replans: 1
+  settle_s: 1.0
+  log_dir: runs/real

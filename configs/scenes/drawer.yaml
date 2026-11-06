@@ -1,0 +1,71 @@
+# Drawer scene (paper: Drawer-Store / Drawer-Retrieve). Object names, poses and thresholds are
+# OUR reconstruction from the skill names in the paper; measure your own rig and edit.
+name: drawer
+objects: [lower_drawer, lemon, strawberry, plate]      # segmented by GroundedSAM
+static_objects: {}                                        # fixed regions, not segmented
+segmenter_aliases:
+  lower_drawer: "drawer"
+  lemon: "lemon"
+  strawberry: "strawberry"
+  plate: "plate"
+workspace: [[-0.2, -0.6, -0.05], [1.0, 0.6, 0.8]]         # world-frame crop (robot base frame), metres
+
+relations:
+  table_name: table
+  table_z: 0.0
+  z_contact_tol: 0.025
+  containers: [lower_drawer]
+  supports: [plate]
+  # The drawer front is what the cameras see; give its interior box in the CLOSED pose (moves with the drawer)
+  container_regions:
+    lower_drawer: {min: [0.55, -0.15, 0.02], max: [0.85, 0.15, 0.12]}
+  articulated:
+    lower_drawer: {axis: [-1, 0, 0], closed_pos: -0.55, open_threshold: 0.05}
+
+# Canonical initial state = reset target
+target:
+  relations:
+    - [lemon, on, plate]
+    - [strawberry, in, lower_drawer]
+  attributes:
+    lower_drawer: {state: closed}
+
+# Atomic reset skill library K (paper: 6 skills for the drawer scene, 2 X-VLA policies each)
+skills:
+  - name: open_lower_drawer
+    instruction: "open the lower drawer"
+    attr_preconditions: {lower_drawer: {state: closed}}
+    attribute_effects: {lower_drawer: {state: open}}
+    checkpoints: [ckpt/drawer/open_lower_drawer/p0, ckpt/drawer/open_lower_drawer/p1]
+  - name: close_lower_drawer
+    instruction: "close the lower drawer"
+    attr_preconditions: {lower_drawer: {state: open}}
+    attribute_effects: {lower_drawer: {state: closed}}
+    checkpoints: [ckpt/drawer/close_lower_drawer/p0, ckpt/drawer/close_lower_drawer/p1]
+  - name: lemon_drawer_to_plate
+    instruction: "put the lemon from the drawer back on the plate"
+    preconditions: [[lemon, in, lower_drawer]]
+    attr_preconditions: {lower_drawer: {state: open}}
+    effects_add: [[lemon, on, plate]]
+    effects_del: [[lemon, in, lower_drawer]]
+    checkpoints: [ckpt/drawer/lemon_drawer_to_plate/p0, ckpt/drawer/lemon_drawer_to_plate/p1]
+  - name: lemon_table_to_plate
+    instruction: "put the lemon from the table back on the plate"
+    preconditions: [[lemon, on, table]]
+    effects_add: [[lemon, on, plate]]
+    effects_del: [[lemon, on, table]]
+    checkpoints: [ckpt/drawer/lemon_table_to_plate/p0, ckpt/drawer/lemon_table_to_plate/p1]
+  - name: strawberry_plate_to_drawer
+    instruction: "put the strawberry from the plate back in the drawer"
+    preconditions: [[strawberry, on, plate]]
+    attr_preconditions: {lower_drawer: {state: open}}
+    effects_add: [[strawberry, in, lower_drawer]]
+    effects_del: [[strawberry, on, plate]]
+    checkpoints: [ckpt/drawer/strawberry_plate_to_drawer/p0, ckpt/drawer/strawberry_plate_to_drawer/p1]
+  - name: strawberry_table_to_drawer
+    instruction: "put the strawberry from the table back in the drawer"
+    preconditions: [[strawberry, on, table]]
+    attr_preconditions: {lower_drawer: {state: open}}
+    effects_add: [[strawberry, in, lower_drawer]]
+    effects_del: [[strawberry, on, table]]
+    checkpoints: [ckpt/drawer/strawberry_table_to_drawer/p0, ckpt/drawer/strawberry_table_to_drawer/p1]

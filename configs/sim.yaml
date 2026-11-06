@@ -1,0 +1,14 @@
+# Symbolic-simulator campaign (no hardware): python scripts/run_evaluation.py --config configs/sim.yaml
+mode: sim
+llm: configs/llm/mock.yaml          # switch to llm/api_dashscope.yaml or llm/local_vllm.yaml to test the real LLM
+tasks: [configs/tasks/drawer_store.yaml, configs/tasks/drawer_retrieve.yaml, configs/tasks/pot_cook.yaml, configs/tasks/pan_cook.yaml]
+episodes: 25
+seed: 0
+sim:
+  p_skill_success: 0.85
+  p_subtask: 0.6
+  p_perception_drop: 0.0
+harness:
+  skill_retries: 0
+  max_replans: 1
+  log_dir: runs/sim

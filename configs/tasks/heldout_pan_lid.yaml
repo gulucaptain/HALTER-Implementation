@@ -1,0 +1,8 @@
+name: heldout_pan_lid
+scene: kitchen
+held_out: true
+instruction: "put the pan on the stove and cover it with the pot lid"
+reference_cases: ../reference_cases/heldout_pan_lid.yaml
+subtasks:
+  - {name: pan_to_stove, goal: [[pan, on, stove]]}
+  - {name: lid_on_pan, goal: [[pot_lid, on, pan]], implies: [pan_to_stove]}

@@ -1,0 +1,8 @@
+name: pot_cook
+scene: kitchen
+instruction: "put the stock pot on the stove, put the carrot in the pot, and cover it with the lid"
+reference_cases: ../reference_cases/pot_cook.yaml
+subtasks:
+  - {name: pot_to_stove, goal: [[stock_pot, on, stove]]}
+  - {name: carrot_to_pot, goal: [[carrot, in, stock_pot]], implies: [pot_to_stove]}
+  - {name: lid_on_pot, goal: [[pot_lid, on, stock_pot]], implies: [pot_to_stove, carrot_to_pot]}

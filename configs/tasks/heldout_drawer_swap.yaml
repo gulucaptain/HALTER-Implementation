@@ -1,0 +1,10 @@
+name: heldout_drawer_swap
+scene: drawer
+held_out: true
+instruction: "open the drawer, take the strawberry out onto the plate, put the lemon in the drawer, close the drawer"
+reference_cases: ../reference_cases/heldout_drawer_swap.yaml
+subtasks:
+  - {name: open_drawer, goal_attributes: {lower_drawer: {state: open}}}
+  - {name: retrieve_strawberry, goal: [[strawberry, on, plate]], implies: [open_drawer]}
+  - {name: store_lemon, goal: [[lemon, in, lower_drawer]], implies: [open_drawer]}
+  - {name: close_drawer, goal: [[lemon, in, lower_drawer], [strawberry, on, plate]], goal_attributes: {lower_drawer: {state: closed}}, implies: [open_drawer, retrieve_strawberry, store_lemon]}

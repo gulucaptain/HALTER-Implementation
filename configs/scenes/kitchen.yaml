@@ -1,0 +1,66 @@
+# Kitchen scene (paper: Pot-Cook / Pan-Cook). Reconstructed from the paper's skill names; edit for your rig.
+name: kitchen
+objects: [stock_pot, pot_lid, pan, carrot, stove, sink]
+static_objects:            # "back in place" = these fixed table regions (world frame, metres)
+  pot_home: {min: [0.35, 0.20, 0.00], max: [0.60, 0.45, 0.01]}
+  pan_home: {min: [0.35, -0.45, 0.00], max: [0.60, -0.20, 0.01]}
+  lid_home: {min: [0.20, 0.00, 0.00], max: [0.35, 0.15, 0.01]}
+segmenter_aliases:
+  stock_pot: "stock pot"
+  pot_lid: "pot lid"
+  pan: "frying pan"
+  carrot: "carrot"
+  stove: "stove"
+  sink: "sink"
+workspace: [[-0.2, -0.7, -0.15], [1.0, 0.7, 0.8]]
+
+relations:
+  table_name: table
+  table_z: 0.0
+  containers: [stock_pot, pan, sink]
+  supports: [stove, stock_pot, pan, pot_home, pan_home, lid_home]
+
+target:
+  relations:
+    - [stock_pot, on, pot_home]
+    - [pan, on, pan_home]
+    - [pot_lid, on, lid_home]
+    - [carrot, in, sink]
+
+skills:
+  - name: lid_back
+    instruction: "put the pot lid back in place"
+    effects_add: [[pot_lid, on, lid_home]]
+    checkpoints: [ckpt/kitchen/lid_back/p0, ckpt/kitchen/lid_back/p1]
+  - name: pot_stove_back
+    instruction: "put the stock pot from the stove back in place"
+    preconditions: [[stock_pot, on, stove]]
+    neg_preconditions: [[pot_lid, on, stock_pot], [carrot, in, stock_pot]]
+    effects_add: [[stock_pot, on, pot_home]]
+    effects_del: [[stock_pot, on, stove]]
+    checkpoints: [ckpt/kitchen/pot_stove_back/p0, ckpt/kitchen/pot_stove_back/p1]
+  - name: pot_table_back
+    instruction: "put the stock pot from the table back in place"
+    preconditions: [[stock_pot, on, table]]
+    neg_preconditions: [[pot_lid, on, stock_pot], [carrot, in, stock_pot]]
+    effects_add: [[stock_pot, on, pot_home]]
+    effects_del: [[stock_pot, on, table]]
+    checkpoints: [ckpt/kitchen/pot_table_back/p0, ckpt/kitchen/pot_table_back/p1]
+  - name: pan_stove_back
+    instruction: "put the pan from the stove back in place"
+    preconditions: [[pan, on, stove]]
+    neg_preconditions: [[carrot, in, pan], [pot_lid, on, pan]]
+    effects_add: [[pan, on, pan_home]]
+    effects_del: [[pan, on, stove]]
+    checkpoints: [ckpt/kitchen/pan_stove_back/p0, ckpt/kitchen/pan_stove_back/p1]
+  - name: pan_table_back
+    instruction: "put the pan from the table back in place"
+    preconditions: [[pan, on, table]]
+    neg_preconditions: [[carrot, in, pan], [pot_lid, on, pan]]
+    effects_add: [[pan, on, pan_home]]
+    effects_del: [[pan, on, table]]
+    checkpoints: [ckpt/kitchen/pan_table_back/p0, ckpt/kitchen/pan_table_back/p1]
+  - name: carrot_back
+    instruction: "put the carrot back in the sink"
+    effects_add: [[carrot, in, sink]]
+    checkpoints: [ckpt/kitchen/carrot_back/p0, ckpt/kitchen/carrot_back/p1]

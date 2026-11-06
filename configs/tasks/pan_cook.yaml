@@ -1,0 +1,7 @@
+name: pan_cook
+scene: kitchen
+instruction: "put the pan on the stove and put the carrot in the pan"
+reference_cases: ../reference_cases/pan_cook.yaml
+subtasks:
+  - {name: pan_to_stove, goal: [[pan, on, stove]]}
+  - {name: carrot_to_pan, goal: [[carrot, in, pan]], implies: [pan_to_stove]}

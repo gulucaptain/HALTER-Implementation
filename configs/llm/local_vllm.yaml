@@ -1,0 +1,9 @@
+# Locally deployed Qwen3.5-397B-A17B behind vLLM's OpenAI-compatible server.
+# Start the server first:  bash scripts/serve_qwen_vllm.sh   (8x H200/H100-80G class GPUs for FP8/BF16)
+backend: local_server
+model: Qwen/Qwen3.5-397B-A17B-FP8      # must equal --served-model-name (or the HF id) used by vllm serve
+base_url: http://localhost:8000/v1
+api_key_env: ""                        # vLLM without --api-key accepts any key
+temperature: 0.0
+max_tokens: 2048
+enable_thinking: false                 # sent as chat_template_kwargs.enable_thinking

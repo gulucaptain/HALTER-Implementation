@@ -1,0 +1,457 @@
+# AUTO-GENERATED from the symbolic simulator. Replace with graphs captured on your robot.
+task_cases:
+- id: success
+  graph:
+    objects:
+    - name: lower_drawer
+      visible: true
+      attributes: {state: closed}
+    - {name: lemon, visible: true}
+    - {name: strawberry, visible: true}
+    - {name: plate, visible: true}
+    relations:
+    - [lemon, 'on', plate]
+    - [strawberry, 'on', plate]
+  completed_subtasks: [open_drawer, retrieve_strawberry, close_drawer]
+  success: true
+  plan: [open_lower_drawer, strawberry_plate_to_drawer, close_lower_drawer]
+  note: all subtasks completed
+- id: failure_1
+  graph:
+    objects:
+    - name: lower_drawer
+      visible: true
+      attributes: {state: closed}
+    - {name: lemon, visible: true}
+    - {name: strawberry, visible: true}
+    - {name: plate, visible: true}
+    relations:
+    - [lemon, 'on', plate]
+    - [strawberry, in, lower_drawer]
+  completed_subtasks: []
+  success: false
+  plan: []
+  note: 0/3 subtasks completed
+- id: failure_2
+  graph:
+    objects:
+    - name: lower_drawer
+      visible: true
+      attributes: {state: open}
+    - {name: lemon, visible: true}
+    - {name: strawberry, visible: true}
+    - {name: plate, visible: true}
+    relations:
+    - [lemon, 'on', plate]
+    - [strawberry, 'on', table]
+  completed_subtasks: [open_drawer]
+  success: false
+  plan: [strawberry_table_to_drawer, close_lower_drawer]
+  note: 1/3 subtasks completed
+- id: failure_3
+  graph:
+    objects:
+    - name: lower_drawer
+      visible: true
+      attributes: {state: open}
+    - {name: lemon, visible: true}
+    - {name: strawberry, visible: true}
+    - {name: plate, visible: true}
+    relations:
+    - [lemon, 'on', plate]
+    - [strawberry, in, lower_drawer]
+  completed_subtasks: [open_drawer]
+  success: false
+  plan: [close_lower_drawer]
+  note: 1/3 subtasks completed
+skill_cases:
+  open_lower_drawer:
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: closed}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    success: true
+    note: 'open_lower_drawer achieved {''lower_drawer'': {''state'': ''open''}}'
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: closed}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    success: true
+    note: 'open_lower_drawer achieved {''lower_drawer'': {''state'': ''open''}}'
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: closed}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    success: true
+    note: 'open_lower_drawer achieved {''lower_drawer'': {''state'': ''open''}}'
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: closed}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    success: true
+    note: 'open_lower_drawer achieved {''lower_drawer'': {''state'': ''open''}}'
+  close_lower_drawer:
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: closed}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: 'close_lower_drawer achieved {''lower_drawer'': {''state'': ''closed''}}'
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: closed}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: 'close_lower_drawer achieved {''lower_drawer'': {''state'': ''closed''}}'
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: closed}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: 'close_lower_drawer achieved {''lower_drawer'': {''state'': ''closed''}}'
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: closed}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: 'close_lower_drawer achieved {''lower_drawer'': {''state'': ''closed''}}'
+  lemon_drawer_to_plate: []
+  lemon_table_to_plate: []
+  strawberry_plate_to_drawer:
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: strawberry_plate_to_drawer achieved [('strawberry', 'in', 'lower_drawer')]
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: strawberry_plate_to_drawer achieved [('strawberry', 'in', 'lower_drawer')]
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: strawberry_plate_to_drawer achieved [('strawberry', 'in', 'lower_drawer')]
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', plate]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: strawberry_plate_to_drawer achieved [('strawberry', 'in', 'lower_drawer')]
+  strawberry_table_to_drawer:
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', table]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: strawberry_table_to_drawer achieved [('strawberry', 'in', 'lower_drawer')]
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', table]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: strawberry_table_to_drawer achieved [('strawberry', 'in', 'lower_drawer')]
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', table]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: strawberry_table_to_drawer achieved [('strawberry', 'in', 'lower_drawer')]
+  - before:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, 'on', table]
+    after:
+      objects:
+      - name: lower_drawer
+        visible: true
+        attributes: {state: open}
+      - {name: lemon, visible: true}
+      - {name: strawberry, visible: true}
+      - {name: plate, visible: true}
+      relations:
+      - [lemon, 'on', plate]
+      - [strawberry, in, lower_drawer]
+    success: true
+    note: strawberry_table_to_drawer achieved [('strawberry', 'in', 'lower_drawer')]

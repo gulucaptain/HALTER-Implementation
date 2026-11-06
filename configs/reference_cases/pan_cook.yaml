@@ -1,0 +1,417 @@
+# AUTO-GENERATED from the symbolic simulator. Replace with graphs captured on your robot.
+task_cases:
+- id: success
+  graph:
+    objects:
+    - {name: stock_pot, visible: true}
+    - {name: pot_lid, visible: true}
+    - {name: pan, visible: true}
+    - {name: carrot, visible: true}
+    - {name: stove, visible: true}
+    - {name: sink, visible: true}
+    relations:
+    - [carrot, in, pan]
+    - [pan, 'on', stove]
+    - [pot_lid, 'on', lid_home]
+    - [stock_pot, 'on', pot_home]
+  completed_subtasks: [pan_to_stove, carrot_to_pan]
+  success: true
+  plan: [carrot_back, pan_stove_back]
+  note: all subtasks completed
+- id: failure_1
+  graph:
+    objects:
+    - {name: stock_pot, visible: true}
+    - {name: pot_lid, visible: true}
+    - {name: pan, visible: true}
+    - {name: carrot, visible: true}
+    - {name: stove, visible: true}
+    - {name: sink, visible: true}
+    relations:
+    - [carrot, in, sink]
+    - [pan, 'on', pan_home]
+    - [pot_lid, 'on', lid_home]
+    - [stock_pot, 'on', pot_home]
+  completed_subtasks: []
+  success: false
+  plan: []
+  note: 0/2 subtasks completed
+- id: failure_2
+  graph:
+    objects:
+    - {name: stock_pot, visible: true}
+    - {name: pot_lid, visible: true}
+    - {name: pan, visible: true}
+    - {name: carrot, visible: true}
+    - {name: stove, visible: true}
+    - {name: sink, visible: true}
+    relations:
+    - [carrot, 'on', table]
+    - [pan, 'on', stove]
+    - [pot_lid, 'on', lid_home]
+    - [stock_pot, 'on', pot_home]
+  completed_subtasks: [pan_to_stove]
+  success: false
+  plan: [pan_stove_back, carrot_back]
+  note: 1/2 subtasks completed
+- id: failure_3
+  graph:
+    objects:
+    - {name: stock_pot, visible: true}
+    - {name: pot_lid, visible: true}
+    - {name: pan, visible: true}
+    - {name: carrot, visible: true}
+    - {name: stove, visible: true}
+    - {name: sink, visible: true}
+    relations:
+    - [carrot, in, sink]
+    - [pan, 'on', stove]
+    - [pot_lid, 'on', lid_home]
+    - [stock_pot, 'on', pot_home]
+  completed_subtasks: [pan_to_stove]
+  success: false
+  plan: [pan_stove_back]
+  note: 1/2 subtasks completed
+skill_cases:
+  lid_back: []
+  pot_stove_back: []
+  pot_table_back: []
+  pan_stove_back:
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', stove]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: pan_stove_back achieved [('pan', 'on', 'pan_home')]
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, 'on', table]
+      - [pan, 'on', stove]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, 'on', table]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: pan_stove_back achieved [('pan', 'on', 'pan_home')]
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, 'on', table]
+      - [pan, 'on', stove]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, 'on', table]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: pan_stove_back achieved [('pan', 'on', 'pan_home')]
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', stove]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: pan_stove_back achieved [('pan', 'on', 'pan_home')]
+  pan_table_back:
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', table]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: pan_table_back achieved [('pan', 'on', 'pan_home')]
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', table]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: pan_table_back achieved [('pan', 'on', 'pan_home')]
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', table]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: pan_table_back achieved [('pan', 'on', 'pan_home')]
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', table]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: pan_table_back achieved [('pan', 'on', 'pan_home')]
+  carrot_back:
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, pan]
+      - [pan, 'on', stove]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', stove]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: carrot_back achieved [('carrot', 'in', 'sink')]
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, 'on', table]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: carrot_back achieved [('carrot', 'in', 'sink')]
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, 'on', table]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', pan_home]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: carrot_back achieved [('carrot', 'in', 'sink')]
+  - before:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, pan]
+      - [pan, 'on', stove]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    after:
+      objects:
+      - {name: stock_pot, visible: true}
+      - {name: pot_lid, visible: true}
+      - {name: pan, visible: true}
+      - {name: carrot, visible: true}
+      - {name: stove, visible: true}
+      - {name: sink, visible: true}
+      relations:
+      - [carrot, in, sink]
+      - [pan, 'on', stove]
+      - [pot_lid, 'on', lid_home]
+      - [stock_pot, 'on', pot_home]
+    success: true
+    note: carrot_back achieved [('carrot', 'in', 'sink')]

@@ -1,0 +1,8 @@
+name: drawer_retrieve
+scene: drawer
+instruction: "open the lower drawer, take the strawberry out onto the plate, and close the drawer"
+reference_cases: ../reference_cases/drawer_retrieve.yaml
+subtasks:
+  - {name: open_drawer, goal_attributes: {lower_drawer: {state: open}}}
+  - {name: retrieve_strawberry, goal: [[strawberry, on, plate]], implies: [open_drawer]}
+  - {name: close_drawer, goal: [[strawberry, on, plate]], goal_attributes: {lower_drawer: {state: closed}}, implies: [open_drawer, retrieve_strawberry]}

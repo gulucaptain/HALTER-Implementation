@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "halter"
+version = "0.1.0"
+description = "Unofficial reproduction of HALTER: graph-based harness for autonomous long-horizon manipulation evaluation and reset"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "pyyaml>=6.0", "scipy>=1.10", "openai>=1.40", "pillow>=10.0"]
+
+[project.optional-dependencies]
+perception = ["torch", "transformers>=4.45", "depthai", "pyrealsense2"]
+xvla = ["lerobot[xvla]"]
+franka = ["franky-control", "pyRobotiqGripper"]
+local_llm = ["vllm>=0.17.0"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["halter*"]

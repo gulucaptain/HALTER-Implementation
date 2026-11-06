@@ -1,0 +1,8 @@
+# In-process transformers, for debugging on a single GPU with a small Qwen (not the paper's model).
+backend: local_hf
+model: Qwen/Qwen3-8B
+temperature: 0.0
+max_tokens: 1024
+enable_thinking: false
+device_map: auto
+torch_dtype: bfloat16

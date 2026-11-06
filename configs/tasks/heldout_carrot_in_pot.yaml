@@ -1,0 +1,8 @@
+name: heldout_carrot_in_pot
+scene: kitchen
+held_out: true
+instruction: "put the carrot in the stock pot and cover it with the lid"
+reference_cases: ../reference_cases/heldout_carrot_in_pot.yaml
+subtasks:
+  - {name: carrot_to_pot, goal: [[carrot, in, stock_pot]]}
+  - {name: lid_on_pot, goal: [[pot_lid, on, stock_pot]], implies: [carrot_to_pot]}

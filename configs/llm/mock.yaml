@@ -1,0 +1,2 @@
+# Rule-based oracle reasoning (no model). For testing the pipeline and as an upper bound.
+backend: mock

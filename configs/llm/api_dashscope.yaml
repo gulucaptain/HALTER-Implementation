@@ -1,0 +1,13 @@
+# Qwen via Alibaba Cloud Model Studio (DashScope), OpenAI-compatible endpoint.
+# export DASHSCOPE_API_KEY=sk-...
+# Check the exact model id in the Model Studio console (model market); open-weight Qwen3.5-397B-A17B
+# is typically listed as "qwen3.5-397b-a17b"; "qwen3.5-plus" is the hosted flagship.
+backend: api
+model: qwen3.5-397b-a17b
+base_url: https://dashscope.aliyuncs.com/compatible-mode/v1          # Beijing (legacy domain)
+# base_url: https://dashscope-intl.aliyuncs.com/compatible-mode/v1   # Singapore (legacy domain)
+# base_url: https://{WorkspaceId}.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1   # new domain
+api_key_env: DASHSCOPE_API_KEY
+temperature: 0.0
+max_tokens: 2048
+enable_thinking: false

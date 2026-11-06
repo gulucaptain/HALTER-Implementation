@@ -1,0 +1,9 @@
+# Task goals are our reconstruction (the paper names the tasks but not their exact subtasks).
+name: drawer_store
+scene: drawer
+instruction: "open the lower drawer, put the lemon in the drawer, and close the drawer"
+reference_cases: ../reference_cases/drawer_store.yaml
+subtasks:
+  - {name: open_drawer, goal_attributes: {lower_drawer: {state: open}}}
+  - {name: store_lemon, goal: [[lemon, in, lower_drawer]], implies: [open_drawer]}
+  - {name: close_drawer, goal: [[lemon, in, lower_drawer]], goal_attributes: {lower_drawer: {state: closed}}, implies: [open_drawer, store_lemon]}
